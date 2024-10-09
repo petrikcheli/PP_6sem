@@ -25,6 +25,13 @@ class Vacancies(models.Model):
                               default=Status.DRAFT)
     
     
+    class PublishedManager(models.Manager):
+        def get_queryset(self):
+            return super().get_queryset()\
+                .filter(status=Vacancies.Status.PUBLISHED)
+
+    objects = models.Manager()
+    published = PublishedManager()
 
     class Meta:
         ordering = ['-publish']
