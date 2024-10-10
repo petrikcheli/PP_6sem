@@ -1,0 +1,9 @@
+{% extends "vacancies/base.html" %}
+{% block name %}{{ post.name }}{% endblock %}
+{% block content %}
+    <h1>{{ post.name }}</h1>
+    <p class="date">
+        Published {{ post.publish }} by {{ post.author }}
+    </p>
+{{ post.body|linebreaks }}
+{% endblock %}

@@ -6,6 +6,7 @@ from django.http import Http404
 
 def post_list(request):
     posts = Vacancies.published.all()
+
     return render(request, 'vacancies/post/list.html',
                   {'posts': posts})
 
