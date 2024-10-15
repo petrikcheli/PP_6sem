@@ -31,14 +31,14 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'account.apps.AccountConfig',
+    'vacancies.apps.VacanciesConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'vacancies.apps.VacanciesConfig',
-    'account.apps.AccountConfig',
 ]
 
 MIDDLEWARE = [
@@ -124,5 +124,9 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = 'home'  # URL после успешного входа
-LOGOUT_REDIRECT_URL = 'home'  # URL после выхода
+LOGIN_REDIRECT_URL = 'dashboard'
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
+
+#LOGIN_REDIRECT_URL = 'home'  # URL после успешного входа
+#LOGOUT_REDIRECT_URL = 'home'  # URL после выхода
