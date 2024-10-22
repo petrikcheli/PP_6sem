@@ -17,7 +17,7 @@
                         <a href="#"></a>
                     </li>
                     <li {% if section == "people"%}class="selected"{%endif%}>
-                        <a href="#">People</a>
+                        <a href="search">Search</a>
                     </li>
                 </ul>
             {%endif%}
@@ -33,6 +33,9 @@
         <div id="sidebar">
             <h2>Vacancies</h2>
             <p>This is Vacancies UrFU</p>
+        </div>
+        <div id="content">
+            {% block content %}{% endblock %}
         </div>
     </body>
 </html> 

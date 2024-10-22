@@ -23,6 +23,7 @@ class Vacancies(models.Model):
     status = models.CharField(max_length=2,
                               choices=Status.choices,
                               default=Status.DRAFT)
+
     
     
     class PublishedManager(models.Manager):
