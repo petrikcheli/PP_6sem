@@ -8,3 +8,6 @@ class VacancyForm(forms.ModelForm):
     class Meta:
         model = Vacancies
         fields = ['name', 'slug', 'body', 'status']
+
+
+        

@@ -50,3 +50,13 @@ class VacancyCreateView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user  # Устанавливаем текущего пользователя как автора вакансии
         return super().form_valid(form)
+
+class VacancyCreateView(LoginRequiredMixin, CreateView):
+    model = Vacancies
+    form_class = VacancyForm
+    template_name = 'vacancies/post/vacancy_form.html'
+    success_url = reverse_lazy('vacancies/post/list.html')  # Укажите URL для перенаправления после успешного создания вакансии
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user  # Устанавливаем текущего пользователя как автора вакансии
+        return super().form_valid(form)

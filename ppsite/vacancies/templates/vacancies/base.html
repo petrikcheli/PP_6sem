@@ -18,17 +18,17 @@
                     </option>
                 {% endfor %}
             </select>
-            <button type="submit">Change language</button>
+            <button type="submit">{% trans "Change language"%}</button>
         </form>
         <div id="header">
-            <span class="logo"> Vacancies </span>
+            <span class="logo">{% trans "Vacancies" %} </span>
             {%if request.user.is_authenticated %}
                 <ul class="menu">
                     <li {% if section == "dashboard" %} class="selected" {%endif%}>
                         <a href="{% url 'dashboard' %}">{% trans "Vacancies" %}</a>
                     </li>
                     <li {%if section == "images" %}class="selected" {%endif%}>
-                        <a href="#"></a>
+                        <a href="new">{% trans "New vacancies" %}</a>
                     </li>
                     <li {% if section == "people"%}class="selected"{%endif%}>
                         <a href="search">{% trans "Search" %}</a>
@@ -38,9 +38,14 @@
             <span class="user">
                 {% if request.user.is_authenticated %}
                     {% trans "Hello" %} {{ request.user.first_name|default:request.user.username }},
-                    <a href="{% url "logout" %}">{% trans "Logout" %}</a>
+                    <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        {% trans "Logout" %}
+                    </a>
+                    <form id="logout-form" action="{% url 'logout' %}" method="post" style="display:none;">
+                        {% csrf_token %}
+                    </form>
                 {% else %}
-                    <a href="{% url "login" %}">{% trans "Login" %}</a>
+                    <a href="{% url 'login' %}">{% trans "Login" %}</a>
                 {% endif %}
             </span>
         </div>

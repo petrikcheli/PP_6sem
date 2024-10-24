@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-23 19:20+0000\n"
+"POT-Creation-Date: 2024-10-24 11:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,35 +19,51 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
-#: vacancies/models.py:14 vacancies/models.py:26
-msgid "Vacancy Name"
-msgstr "Имя Вакансий"
 
-#: vacancies/models.py:16
-msgid "Description"
-msgstr ""
+#: vacancies/templates/vacancies/base.html:21
+msgid "Change language"
+msgstr "Изменить язык"
 
-#: vacancies/templates/vacancies/base.html:15
-#: vacancies/templates/vacancies/base.html:35
+#: vacancies/templates/vacancies/base.html:24
+#: vacancies/templates/vacancies/base.html:28
+#: vacancies/templates/vacancies/base.html:48
+#: vacancies/templates/vacancies/post/list.html:5
 msgid "Vacancies"
 msgstr "Вакансии"
 
-#: vacancies/templates/vacancies/base.html:21
-msgid "Search"
-msgstr "искать"
+#: vacancies/templates/vacancies/base.html:31
+msgid "New vacancies"
+msgstr "Новые Вакансии"
 
-#: vacancies/templates/vacancies/base.html:27
+#: vacancies/templates/vacancies/base.html:34
+msgid "Search"
+msgstr "Искать"
+
+#: vacancies/templates/vacancies/base.html:40
 msgid "Hello"
 msgstr "Привет"
 
-#: vacancies/templates/vacancies/base.html:28
+#: vacancies/templates/vacancies/base.html:41
 msgid "Logout"
 msgstr "Выход"
 
-#: vacancies/templates/vacancies/base.html:30
+#: vacancies/templates/vacancies/base.html:43
 msgid "Login"
 msgstr "Вход"
 
-#: vacancies/templates/vacancies/base.html:36
+#: vacancies/templates/vacancies/base.html:49
 msgid "This is Vacancies UrFU"
 msgstr "Это вакансии УРФУ"
+
+#: vacancies/templates/vacancies/post/detail.html:7
+#: vacancies/templates/vacancies/post/list.html:13
+msgid "Published"
+msgstr "Опубликавано"
+
+#: vacancies/templates/vacancies/post/detail.html:7
+#: vacancies/templates/vacancies/post/list.html:13
+msgid "by"
+msgstr "им"
+
+#~ msgid "Vacancy Name"
+#~ msgstr "Имя Вакансий"

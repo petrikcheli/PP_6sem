@@ -1,6 +1,8 @@
 from django import forms
 from django.contrib.auth.models import User
-from .models import Vacancy, Application
+from django.contrib.auth.forms import UserCreationForm
+from .models import UserProfile
+
 
 class LoginForm(forms.Form):
     username = forms.CharField()
@@ -12,9 +14,12 @@ class UserRegistrationForm(forms.ModelForm):
     password2 = forms.CharField(label='Repeat password',
                                 widget=forms.PasswordInput)
 
+    
+    user_type = forms.ChoiceField(choices=UserProfile.USER_TYPE_CHOICES, label='User Type')
+
     class Meta:
         model = User
-        fields = ['username', 'first_name', 'email']
+        fields = ['username', 'first_name', 'email', 'user_type']
 
     def clean_password2(self):
         cd = self.cleaned_data
