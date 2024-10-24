@@ -22,5 +22,6 @@ urlpatterns = [
     path('account/', include('account.urls')),
     path('', include('account.urls')),
     path('vacancies/', include('vacancies.urls', namespace='vacancies')),
+    path('i18n/', include('django.conf.urls.i18n')), 
 ]
 

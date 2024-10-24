@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.postgres',
 ]
 
 MIDDLEWARE = [
@@ -49,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 ]
 
 ROOT_URLCONF = 'ppsite.urls'
@@ -64,6 +66,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.i18n',
             ],
         },
     },
@@ -107,7 +110,22 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+USE_I18N = True  # Включает поддержку интернационализации
+USE_L10N = True  # Включает поддержку локализации (форматы чисел, дат)
+USE_TZ = True    # Включает поддержку часовых поясов
+
+
+LANGUAGE_CODE = 'en'  # Язык по умолчанию
+LANGUAGES = [
+    ('en', 'English'),
+    ('ru', 'Русский'),
+    # Добавьте другие языки по мере необходимости
+]
+
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale'),
+    #os.path.join(BASE_DIR, 'locale'),  # Путь к файлам перевода
+]
 
 TIME_ZONE = 'UTC'
 

@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
 <html>
     <head>
@@ -6,33 +7,46 @@
         <link href="{% static "css/base.css" %}" rel="stylesheet">
     </head>
     <body>
+        <form action="{% url 'set_language' %}" method="post">
+            {% csrf_token %}
+            <input name="next" type="hidden" value="{{ redirect_to }}">
+            <select name="language">
+                {% get_current_language as LANGUAGE_CODE %}
+                {% for lang in LANGUAGES %}
+                    <option value="{{ lang.0 }}"{% if lang.0 == LANGUAGE_CODE %} selected{% endif %}>
+                        {{ lang.1 }}
+                    </option>
+                {% endfor %}
+            </select>
+            <button type="submit">Change language</button>
+        </form>
         <div id="header">
             <span class="logo"> Vacancies </span>
             {%if request.user.is_authenticated %}
                 <ul class="menu">
                     <li {% if section == "dashboard" %} class="selected" {%endif%}>
-                        <a href="{% url 'dashboard' %}">Vacancies</a>
+                        <a href="{% url 'dashboard' %}">{% trans "Vacancies" %}</a>
                     </li>
                     <li {%if section == "images" %}class="selected" {%endif%}>
                         <a href="#"></a>
                     </li>
                     <li {% if section == "people"%}class="selected"{%endif%}>
-                        <a href="search">Search</a>
+                        <a href="search">{% trans "Search" %}</a>
                     </li>
                 </ul>
             {%endif%}
             <span class="user">
                 {% if request.user.is_authenticated %}
-                    Hello {{ request.user.first_name|default:request.user.username }},
-                    <a href="{% url "logout" %}">Logout</a>
+                    {% trans "Hello" %} {{ request.user.first_name|default:request.user.username }},
+                    <a href="{% url "logout" %}">{% trans "Logout" %}</a>
                 {% else %}
-                    <a href="{% url "login" %}">Log-in</a>
+                    <a href="{% url "login" %}">{% trans "Login" %}</a>
                 {% endif %}
             </span>
         </div>
         <div id="sidebar">
-            <h2>Vacancies</h2>
-            <p>This is Vacancies UrFU</p>
+            <h2>{% trans "Vacancies" %}</h2>
+            <p>{% trans "This is Vacancies UrFU" %}</p>
         </div>
         <div id="content">
             {% block content %}{% endblock %}

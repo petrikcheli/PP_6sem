@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+from django.utils.translation import gettext_lazy as _
 
 # Create your models here.
 
@@ -10,9 +11,9 @@ class Vacancies(models.Model):
         DRAFT = 'DF', 'Draft'
         PUBLISHED = 'PB', 'Published'
 
-    name = models.CharField(max_length=250)
+    name = models.CharField(max_length=250, verbose_name=_('Vacancy Name'))
     slug = models.SlugField(max_length=250)
-    body = models.TextField()
+    body = models.TextField(verbose_name=_('Description'))
     author = models.ForeignKey(User, 
                                on_delete=models.CASCADE,
                                related_name='blog_posts')
@@ -22,7 +23,7 @@ class Vacancies(models.Model):
     updated = models.DateTimeField(auto_now=True)
     status = models.CharField(max_length=2,
                               choices=Status.choices,
-                              default=Status.DRAFT)
+                              default=Status.DRAFT, verbose_name=_('Vacancy Name'))
 
     
     
